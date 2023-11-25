@@ -1,5 +1,3 @@
-
-https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/02e5db80-58b7-4405-a3cb-e6630b894b5b
 # android-2-client
 DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
 ## 시연영상
@@ -47,7 +45,7 @@ https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/b1d50
 
 ## About Service
 
-서비스명 : My Miracle time (마미타)
+서비스명 : 마이 미라클 타임 (a.k.a 마미타)
 
 서비스설명 : 아침 6시에 일어나는 사람만이 미라클 타임이 아니다!! 나의 미라클타임을 정하고 확인할 수 있는 서비스
 
