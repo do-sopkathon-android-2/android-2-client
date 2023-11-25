@@ -5,6 +5,9 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization' version "1.8.22"
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.sopt.intime'
     compileSdk 34
@@ -16,6 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "BASE_URL", properties["base.url"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -86,6 +90,9 @@ dependencies {
 
     // ViewPager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    // AnyChart
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.5'
 
     // dotsindicator
     implementation 'com.tbuonomo:dotsindicator:5.0'
