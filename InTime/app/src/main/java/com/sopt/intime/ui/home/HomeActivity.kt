@@ -6,11 +6,15 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anychart.AnyChart
+import com.anychart.chart.common.dataentry.ValueDataEntry
+import com.anychart.charts.Pie
 import com.sopt.intime.data.remote.response.UserTimeDataResponse
 import com.sopt.intime.databinding.ActivityHomeBinding
 import com.sopt.intime.ui.home.adapter.dinner.DinnerAdapter
 import com.sopt.intime.ui.home.adapter.lunch.LunchAdapter
 import com.sopt.intime.ui.home.adapter.morning.MorningAdapter
+import kotlin.math.abs
 
 class HomeActivity : AppCompatActivity() {
     private val homeBinding: ActivityHomeBinding by lazy {

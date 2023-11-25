@@ -13,7 +13,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface TodoAPI {
+interface InTimeService {
     @POST("/api/v1/user-time/{userId}")
     fun postUserTime(
         @Path("userId") userId: Long,

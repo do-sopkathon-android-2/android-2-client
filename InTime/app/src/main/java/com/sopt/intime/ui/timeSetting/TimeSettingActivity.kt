@@ -92,13 +92,11 @@ class TimeSettingActivity : AppCompatActivity() {
     private fun setupLunchView() {
         binding.lpiTimeSetting.progress = 67
         binding.tvTimeSettingTitleQuestion.text = "Q. 당신의 점심은 언제인가요?"
-        timeSettingViewModel.relocateTimeState()
     }
 
     private fun setupDinnerView() {
         binding.lpiTimeSetting.progress = 100
         binding.tvTimeSettingTitleQuestion.text = "Q. 당신의 저녁은 언제인가요?"
-        timeSettingViewModel.relocateTimeState()
     }
 
 
