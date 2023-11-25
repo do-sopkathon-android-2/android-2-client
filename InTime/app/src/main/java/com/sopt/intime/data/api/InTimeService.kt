@@ -15,10 +15,10 @@ import retrofit2.http.Query
 
 interface InTimeService {
     @POST("/api/v1/user-time/{userId}")
-    fun postUserTime(
+    suspend fun postUserTime(
         @Path("userId") userId: Long,
         @Body userTimeRequest: UserTimeRequest
-    ): Call<UserTimeResponse>
+    ): UserTimeResponse
 
     @GET("/api/v1/user-time/{userId}")
     fun getUserTime(

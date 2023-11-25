@@ -45,10 +45,15 @@ class TimeSettingActivity : AppCompatActivity() {
             val hasBlank =
                 timeSettingViewModel.startTime.value.isNullOrBlank() or timeSettingViewModel.endTime.value.isNullOrBlank()
 
-            if ((timeSettingViewModel.progressState.value == ProgressState.DINNER) and !hasBlank) navigateToHomeActivity()
-            // 데이터바인딩으로 빼야함
+            when {
+                (timeSettingViewModel.progressState.value == ProgressState.DINNER) and !hasBlank -> {
+                    timeSettingViewModel.saveTimeRecord()
+                    navigateToHomeActivity()
+                }
 
-            if (hasBlank) return@setOnClickListener
+                hasBlank -> return@setOnClickListener
+                else -> {}
+            }
 
             timeSettingViewModel.savePreviousTime()
             timeSettingViewModel.updateProgressState(ButtonState.NEXT)
@@ -78,7 +83,6 @@ class TimeSettingActivity : AppCompatActivity() {
 
 
     private fun navigateToHomeActivity() {
-        // 서버통신
         // 런치싱글탑
         // 온보딩 여부 저장해야함
         startActivity(HomeActivity.from(this))
