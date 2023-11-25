@@ -54,8 +54,8 @@ class TimeSettingActivity : AppCompatActivity() {
 
             when {
                 (timeSettingViewModel.progressState.value == ProgressState.DINNER) and !hasBlank -> {
-                    timeSettingViewModel.saveTimeRecord()
                     navigateToHomeActivity()
+                    timeSettingViewModel.saveTimeRecord()
                 }
 
                 hasBlank -> return@setOnClickListener
