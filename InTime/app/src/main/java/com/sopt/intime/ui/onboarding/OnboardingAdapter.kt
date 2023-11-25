@@ -7,7 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class OnboardingAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    private lateinit var onboardingAdapter: OnboardingAdapter
     private val fragments = listOf<Fragment>(
         OnboardingProblemFragment(),
         OnboardingValueFragment(),
