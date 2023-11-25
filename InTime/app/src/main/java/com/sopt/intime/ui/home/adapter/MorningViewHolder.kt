@@ -8,6 +8,6 @@ class MorningViewHolder(
     private val binding: ItemToDoListBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(dataContent: DataContent) {
-        binding.tvToDoListTitle.text = dataContent.content
+//        binding.tvToDoListTitle.text = dataContent.content
     }
 }

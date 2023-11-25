@@ -29,11 +29,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_home_title" />
 
+
+        <TextView
+            android:id="@+id/preview"
+            android:layout_width="400dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_home_divider" />
+
         <com.anychart.AnyChartView
             android:id="@+id/piechart_home"
             android:layout_width="400dp"
             android:layout_height="0dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_home_divider" />
+
+        <View
+            android:layout_width="370dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/rectangle_yellow_radius_150_border_2"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +65,8 @@
             android:id="@+id/tv_home_morning_start_time"
             android:layout_width="31dp"
             android:layout_height="21dp"
-            android:background="@color/purple_200"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rectangle_yellow_radius_12"
             android:gravity="center"
             android:text="11"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,35 +76,133 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:layout_marginBottom="-4dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/piechart_home"
             app:layout_constraintEnd_toEndOf="@id/piechart_home"
             app:layout_constraintStart_toStartOf="@id/piechart_home" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_home_morning"
-            android:layout_width="50dp"
-            android:layout_height="17dp"
-            android:layout_marginStart="20dp"
-            android:background="@color/purple_200"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/piechart_home">
+        <LinearLayout
+            android:id="@+id/linear_layout_tag"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/preview"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/preview"
+            app:layout_constraintEnd_toEndOf="@id/preview"
+            app:layout_constraintStart_toStartOf="@id/preview">
 
             <TextView
+                android:id="@+id/tv_morning_tag"
+                style="@style/body_r14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_tag"
+                android:backgroundTint="@color/purple_C4BAFF"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="아침 | 11시" />
+
+            <TextView
+                android:id="@+id/tv_launch_tag"
+                style="@style/body_r14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_tag"
+                android:backgroundTint="@color/purple_9B8AFF"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="아침 | 11시" />
+
+            <TextView
+                android:id="@+id/tv_dinner_tag"
+                style="@style/body_r14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_tag"
+                android:backgroundTint="@color/purple_6958CF"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="아침 | 11시" />
+
+            <TextView
+                android:id="@+id/tv_night_tag"
+                style="@style/body_r14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tag"
+                android:backgroundTint="@color/purple_3D3B5C"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="아침 | 11시" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_to_do_list"
+            style="@style/head_b22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text="TO DO LIST"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_tag" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_morning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_to_do_list">
+
+            <TextView
+                style="@style/body_b14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="아침"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="10dp"
-                android:layout_height="12dp"
-                android:text="+"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_plus"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/purple_C4BAFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -93,10 +214,54 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_home_morning"
-            tools:itemCount="3"
+            tools:itemCount="1"
             tools:listitem="@layout/item_to_do_list" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_launch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_home_morning">
+
+            <TextView
+                style="@style/body_b14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="점심"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/purple_C4BAFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
 </androidx.core.widget.NestedScrollView>

@@ -17,5 +17,7 @@
     <color name="gray_200_BFBFBF">#BFBFBF</color>
     <color name="white_FFFFFF">#FFFFFF</color>
     <color name="translucent_40000000">#40000000</color>
-
+    <color name="purple_C4BAFF">#C4BAFF</color>
+    <color name="purple_6958CF">#6958CF</color>
+    <color name="purple_3D3B5C">#3D3B5C</color>
 </resources>
