@@ -248,11 +248,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun from(context: Context): Intent = Intent(context, HomeActivity::class.java)
+        fun from(context: Context): Intent = Intent(context, HomeActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        }
     }
-}
-
-fun Activity.hideKeyboard(view: View) {
-    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-        .hideSoftInputFromWindow(view.windowToken, 0)
 }

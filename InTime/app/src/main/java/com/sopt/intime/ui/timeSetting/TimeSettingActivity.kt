@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.sopt.intime.R
 import com.sopt.intime.databinding.ActivityTimeSettingBinding
 import com.sopt.intime.ui.home.HomeActivity
 import com.sopt.intime.ui.timeSetting.model.ButtonState
@@ -41,6 +42,12 @@ class TimeSettingActivity : AppCompatActivity() {
             timeInputFragment.show(supportFragmentManager, timeInputFragment.tag)
         }
 
+        binding.ivTimeSettingBackButton.setOnClickListener {
+            if (timeSettingViewModel.progressState.value == ProgressState.MORNING) finish()
+            timeSettingViewModel.restorePreviousTime()
+            timeSettingViewModel.updateProgressState(ButtonState.PREVIOUS)
+        }
+
         binding.btnTimeSettingNext.setOnClickListener {
             val hasBlank =
                 timeSettingViewModel.startTime.value.isNullOrBlank() or timeSettingViewModel.endTime.value.isNullOrBlank()
@@ -54,15 +61,8 @@ class TimeSettingActivity : AppCompatActivity() {
                 hasBlank -> return@setOnClickListener
                 else -> {}
             }
-
             timeSettingViewModel.savePreviousTime()
             timeSettingViewModel.updateProgressState(ButtonState.NEXT)
-        }
-
-        binding.ivTimeSettingBackButton.setOnClickListener {
-            if (timeSettingViewModel.progressState.value == ProgressState.MORNING) finish()
-            timeSettingViewModel.restorePreviousTime()
-            timeSettingViewModel.updateProgressState(ButtonState.PREVIOUS)
         }
     }
 
@@ -83,24 +83,25 @@ class TimeSettingActivity : AppCompatActivity() {
 
 
     private fun navigateToHomeActivity() {
-        // 런치싱글탑
-        // 온보딩 여부 저장해야함
         startActivity(HomeActivity.from(this))
     }
 
     private fun setupMorningView() {
         binding.lpiTimeSetting.progress = 33
-        binding.tvTimeSettingTitleQuestion.text = "Q. 당신의 아침은 언제인가요?"
+        binding.tvTimeSettingTitleQuestion.text =
+            getString(R.string.tv_time_setting_title_question_morning)
     }
 
     private fun setupLunchView() {
         binding.lpiTimeSetting.progress = 67
-        binding.tvTimeSettingTitleQuestion.text = "Q. 당신의 점심은 언제인가요?"
+        binding.tvTimeSettingTitleQuestion.text =
+            getString(R.string.tv_time_setting_title_question_lunch)
     }
 
     private fun setupDinnerView() {
         binding.lpiTimeSetting.progress = 100
-        binding.tvTimeSettingTitleQuestion.text = "Q. 당신의 저녁은 언제인가요?"
+        binding.tvTimeSettingTitleQuestion.text =
+            getString(R.string.tv_time_setting_title_question_dinner)
     }
 
 

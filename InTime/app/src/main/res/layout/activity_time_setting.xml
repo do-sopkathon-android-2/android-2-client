@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
-            android:text="@string/tv_time_setting_title_question"
+            android:hint="Q. 당신의 아침은 언제인가요?"
             android:textAppearance="@style/title_sb20"
             android:textColor="@color/black_000000"
             app:layout_constraintStart_toStartOf="parent"

@@ -40,10 +40,12 @@ class TimeSettingViewModel(
                 inTimeService.postUserTime(
                     userId = USER_ID,
                     userTimeRequest = UserTimeRequest(
-                        morningStart = timeRecord.value?.first()?.first?.formatTime() ?: "00:00",
-                        lunchStart = timeRecord.value?.first()?.second?.formatTime() ?: "00:00",
-                        dinnerStart = startTime.value?.formatTime() ?: "00:00",
-                        dinnerEnd = endTime.value?.formatTime() ?: "00:00"
+                        morningStart = timeRecord.value?.first()?.first?.formatTime()
+                            ?: DEFAULT_TIME,
+                        lunchStart = timeRecord.value?.first()?.second?.formatTime()
+                            ?: DEFAULT_TIME,
+                        dinnerStart = startTime.value?.formatTime() ?: DEFAULT_TIME,
+                        dinnerEnd = endTime.value?.formatTime() ?: DEFAULT_TIME
                     )
                 )
             }.onSuccess {
@@ -73,11 +75,7 @@ class TimeSettingViewModel(
     }
 
     fun savePreviousTime() {
-        Log.d("123123", _startTime.value.toString())
-        Log.d("1231234", _endTime.value.toString())
         timeRecord.value?.add((_startTime.value ?: BLANK) to (_endTime.value ?: BLANK))
-
-        Log.d("123123123", timeRecord.value.toString())
         relocateTimeState()
     }
 
@@ -111,6 +109,7 @@ class TimeSettingViewModel(
     companion object {
         private const val CORRECTION_VALUE = 12
         private const val USER_ID = 1L
+        private const val DEFAULT_TIME = "00:00"
         private const val BLANK = ""
         private const val AM = "오전"
         private const val PM = "오후"
