@@ -9,8 +9,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
-object RetrofitManager {
-    const val BASE_URL = BuildConfig.BASE_URL
+object NetworkModule {
+    private const val BASE_URL = BuildConfig.BASE_URL
 
     private val httpLoggingInterceptor = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -26,10 +26,9 @@ object RetrofitManager {
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
 
-    inline fun <reified T> create(): T =
-        retrofit.create<T>(T::class.java)
+    inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
 }
 
 object RetrofitServicePool {
-    val todoService = RetrofitManager.create<TodoAPI>()
+    val todoService by lazy { NetworkModule.create<InTimeService>() }
 }

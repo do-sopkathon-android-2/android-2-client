@@ -69,6 +69,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+
     private fun setupAnyPieChart(time: UserTimeDataResponse) {
         val data = listOf(
             ValueDataEntry("", abs(time.lunchStart - time.morningStart)),
@@ -242,6 +243,10 @@ class HomeActivity : AppCompatActivity() {
             pie.palette(colors)
             homeBinding.piechartHome.setChart(pie)
         }
+    }
+
+    companion object {
+        fun from(context: Context): Intent = Intent(context, HomeActivity::class.java)
     }
 }
 

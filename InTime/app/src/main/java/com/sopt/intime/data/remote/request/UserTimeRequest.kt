@@ -13,4 +13,4 @@ data class UserTimeRequest(
     val dinnerStart: String,
     @SerialName("dinnerEnd")
     val dinnerEnd: String,
-    )
+)
