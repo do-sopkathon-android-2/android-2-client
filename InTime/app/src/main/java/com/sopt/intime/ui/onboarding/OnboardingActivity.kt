@@ -15,10 +15,7 @@ class OnboardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         onboardingView()
-
-        binding.btnOnboardingNext.setOnClickListener {
-            navigateToTimeSettingActivity()
-        }
+        dotsIndicator()
     }
 
     private fun onboardingView(){
@@ -27,7 +24,10 @@ class OnboardingActivity : AppCompatActivity() {
         viewPager.adapter = onboardingAdapter
     }
 
-    private fun navigateToTimeSettingActivity() {
-        startActivity(TimeSettingActivity.from(this))
+    private fun dotsIndicator(){
+        val pagerAdapter = OnboardingAdapter(this)
+        binding.vpOnboarding.adapter = pagerAdapter
+        binding.vpOnboarding.setCurrentItem(1, true)
+        binding.wormDotsIndicator.attachTo(binding.vpOnboarding)
     }
 }

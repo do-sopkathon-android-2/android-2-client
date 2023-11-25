@@ -9,5 +9,13 @@
     <string name="tv_time_setting_time_input_end">종료 시간을 알려주세요.</string>
     <string name="btn_time_setting_next">다음</string>
 
+    <string name="btn_onboarding_timetable">나만의 타임테이블 만들러 가기</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tv_onboarding_step1">STEP1</string>
+    <string name="tv_onboarding_step1_text">나만의 ‘아침, 점심, 저녁’ 의 시작&amp;종료 시간을 입력해요.</string>
+    <string name="tv_onboarding_step2">STEP2</string>
+    <string name="tv_onboarding_step2_text">나만의 맞춤 타임 테이블을 확인해요.</string>
+    <string name="tv_onboarding_step3">STEP3</string>
+    <string name="tv_onboarding_step3_text">각 시간별로 일정을 쉽게 작성하고 관리해요.</string>
 </resources>
