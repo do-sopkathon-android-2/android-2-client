@@ -6,12 +6,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TodoListAllResponse(
-    @SerialName("data")
-    val `data`: Data,
+    @SerialName("status")
+    val status: Int,
     @SerialName("message")
     val message: String,
-    @SerialName("status")
-    val status: Int
+    @SerialName("data")
+    val `data`: Data,
 )
 
 @Serializable

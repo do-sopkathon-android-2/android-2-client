@@ -1,4 +1,4 @@
-package com.sopt.intime.ui.home.adapter
+package com.sopt.intime.ui.home.adapter.dinner
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.sopt.intime.data.remote.response.DataContent
 import com.sopt.intime.databinding.ItemToDoListBinding
 
-class MorningAdapter : ListAdapter<DataContent, MorningViewHolder>(object :
+class DinnerAdapter : ListAdapter<DataContent, DinnerViewHolder>(object :
     DiffUtil.ItemCallback<DataContent>() {
     override fun areItemsTheSame(oldItem: DataContent, newItem: DataContent): Boolean {
         return oldItem.id == newItem.id
@@ -21,8 +21,8 @@ class MorningAdapter : ListAdapter<DataContent, MorningViewHolder>(object :
     }
 
 }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MorningViewHolder {
-        return MorningViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DinnerViewHolder {
+        return DinnerViewHolder(
             ItemToDoListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -31,7 +31,7 @@ class MorningAdapter : ListAdapter<DataContent, MorningViewHolder>(object :
         )
     }
 
-    override fun onBindViewHolder(holder: MorningViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DinnerViewHolder, position: Int) {
         holder.onBind(getItem(position))
     }
 

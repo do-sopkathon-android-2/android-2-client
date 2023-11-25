@@ -11,10 +11,12 @@
 
         <TextView
             android:id="@+id/tv_home_title"
+            style="@style/title_sb20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="지니님의 타임테이블"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,6 +53,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_home_divider" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:src="@drawable/ic_pie_center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_morning_start_time" />
+
         <View
             android:layout_width="370dp"
             android:layout_height="0dp"
@@ -63,12 +74,15 @@
 
         <TextView
             android:id="@+id/tv_home_morning_start_time"
-            android:layout_width="31dp"
-            android:layout_height="21dp"
+            style="@style/body_b14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:background="@drawable/rectangle_yellow_radius_12"
             android:gravity="center"
-            android:text="11"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:text="11시"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/piechart_home" />
@@ -86,13 +100,13 @@
             android:id="@+id/linear_layout_tag"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@color/white"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/preview"
-            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="@id/preview"
             app:layout_constraintEnd_toEndOf="@id/preview"
-            app:layout_constraintStart_toStartOf="@id/preview">
+            app:layout_constraintStart_toStartOf="@id/preview"
+            app:layout_constraintTop_toBottomOf="@id/preview">
 
             <TextView
                 android:id="@+id/tv_morning_tag"
@@ -180,8 +194,8 @@
                 style="@style/body_b14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아침"
                 android:layout_marginStart="8dp"
+                android:text="아침"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -210,7 +224,7 @@
             android:id="@+id/rv_home_morning"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_home_morning"
@@ -232,8 +246,8 @@
                 style="@style/body_b14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="점심"
                 android:layout_marginStart="8dp"
+                android:text="점심"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -258,10 +272,71 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_launch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_home_launch"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_to_do_list" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_home_dinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_home_launch">
+
+            <TextView
+                style="@style/body_b14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="저녁"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/purple_C4BAFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_dinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_home_dinner"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_to_do_list" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </androidx.core.widget.NestedScrollView>
