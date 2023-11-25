@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.20-RC'
+    id 'org.jetbrains.kotlin.plugin.serialization' version "1.8.22"
 }
 
 android {
