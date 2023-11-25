@@ -1,11 +1,7 @@
 package com.sopt.intime.ui.home.adapter.morning
 
 import android.content.Context
-import android.util.Log
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.sopt.intime.data.remote.response.DataContent

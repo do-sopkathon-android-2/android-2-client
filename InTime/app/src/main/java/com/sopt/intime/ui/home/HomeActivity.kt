@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
@@ -54,19 +53,19 @@ class HomeActivity : AppCompatActivity() {
             homeViewModel.morningList.value = morningAdapter.currentList.toMutableList()
             val list = morningAdapter.currentList.toMutableList()
             list.add(DataContent((morningAdapter.currentList.size + 1).toLong(), ""))
-            homeViewModel.morningList.value =  list
+            homeViewModel.morningList.value = list
         }
         homeBinding.clHomeLaunch.setOnClickListener {
             homeViewModel.lunchList.value = lunchAdapter.currentList.toMutableList()
             val list = lunchAdapter.currentList.toMutableList()
             list.add(DataContent((lunchAdapter.currentList.size + 1).toLong(), ""))
-            homeViewModel.lunchList.value =  list
+            homeViewModel.lunchList.value = list
         }
         homeBinding.clHomeDinner.setOnClickListener {
             homeViewModel.dinnerList.value = dinnerAdapter.currentList.toMutableList()
             val list = dinnerAdapter.currentList.toMutableList()
             list.add(DataContent((dinnerAdapter.currentList.size + 1).toLong(), ""))
-            homeViewModel.dinnerList.value =  list
+            homeViewModel.dinnerList.value = list
         }
     }
 
@@ -160,9 +159,11 @@ class HomeActivity : AppCompatActivity() {
     private fun onMorningTodoListClick(content: String) {
         homeViewModel.postTodoList(content, "morning")
     }
+
     private fun onLunchTodoListClick(content: String) {
         homeViewModel.postTodoList(content, "lunch")
     }
+
     private fun onDinnerTodoListClick(content: String) {
         homeViewModel.postTodoList(content, "dinner")
     }
