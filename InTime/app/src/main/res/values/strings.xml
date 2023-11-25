@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">InTime</string>
+    <string name="tv_time_setting_title_question">Q. 당신의 아침은 언제인가요?</string>
+    <string name="tv_time_setting_title_answer">아침 시작시간과 종료 시간을 알려주세요.</string>
+    <string name="tv_time_setting_time_start">시작 시간</string>
+    <string name="tv_time_setting_time_input_start">아침 시작 시간을 알려주세요.</string>
+    <string name="tv_time_setting_hour_unit">시</string>
+    <string name="tv_time_setting_time_end">종료 시간</string>
+    <string name="tv_time_setting_time_input_end">종료 시간을 알려주세요.</string>
+    <string name="btn_time_setting_next">다음</string>
+    <string name="btn_time_setting_save">선택</string>
+    <string name="np_time_setting_format">%d시</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
