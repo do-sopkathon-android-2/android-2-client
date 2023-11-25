@@ -14,9 +14,17 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        onboardingView()
+
         binding.btnOnboardingNext.setOnClickListener {
             navigateToTimeSettingActivity()
         }
+    }
+
+    private fun onboardingView(){
+        val viewPager = binding.vpOnboarding
+        val onboardingAdapter = OnboardingAdapter(this)
+        viewPager.adapter = onboardingAdapter
     }
 
     private fun navigateToTimeSettingActivity() {
