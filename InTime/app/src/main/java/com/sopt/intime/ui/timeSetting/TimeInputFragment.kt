@@ -64,6 +64,11 @@ class TimeInputFragment : BottomSheetDialogFragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     companion object {
         private const val AM = "오전"
         private const val PM = "오후"
