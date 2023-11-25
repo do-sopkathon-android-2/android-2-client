@@ -41,7 +41,7 @@ DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
 
 ## About Service
 
-서비스명 : My Mircle time (마미타)
+서비스명 : My Miracle time (마미타)
 
 서비스설명 : 아침 6시에 일어나는 사람만이 미라클 타임이 아니다!! 나의 미라클타임을 정하고 확인할 수 있는 서비스
 
