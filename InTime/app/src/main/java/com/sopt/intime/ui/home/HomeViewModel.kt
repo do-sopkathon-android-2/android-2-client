@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sopt.intime.data.api.RetrofitServicePool
+import com.sopt.intime.data.remote.request.TodoListRequest
 import com.sopt.intime.data.remote.response.Data
 import com.sopt.intime.data.remote.response.DataContent
 import com.sopt.intime.data.remote.response.TodoListAllResponse
@@ -19,6 +20,13 @@ class HomeViewModel : ViewModel() {
 
     private val _todoListAll = MutableLiveData<Data>()
     val todoListAll: LiveData<Data> = _todoListAll
+
+    private val _isExtraSuccessTodoList = MutableLiveData<Boolean>()
+    val isExtraSuccessTodoList: LiveData<Boolean> = _isExtraSuccessTodoList
+
+    val morningList = MutableLiveData<MutableList<DataContent>>()
+    val lunchList = MutableLiveData<MutableList<DataContent>>()
+    val dinnerList = MutableLiveData<MutableList<DataContent>>()
 
     fun getUserTime() {
         RetrofitServicePool.todoService.getUserTime(1).enqueue(
@@ -42,7 +50,7 @@ class HomeViewModel : ViewModel() {
 
     fun getTodoListAll() {
         RetrofitServicePool.todoService.getTodoList(1).enqueue(
-            object: retrofit2.Callback<TodoListAllResponse> {
+            object : retrofit2.Callback<TodoListAllResponse> {
                 override fun onResponse(
                     call: Call<TodoListAllResponse>,
                     response: Response<TodoListAllResponse>
@@ -59,6 +67,18 @@ class HomeViewModel : ViewModel() {
     }
 
     fun postTodoList(content: String, timeTag: String) {
-//        RetrofitServicePool.todoService.postTodoList()
+        RetrofitServicePool.todoService.postTodoList(1, TodoListRequest(content, timeTag)).enqueue(
+            object : retrofit2.Callback<UserTimeResponse> {
+                override fun onResponse(
+                    call: Call<UserTimeResponse>,
+                    response: Response<UserTimeResponse>
+                ) {
+                    _isExtraSuccessTodoList.value = response.isSuccessful
+                }
+
+                override fun onFailure(call: Call<UserTimeResponse>, t: Throwable) {
+                }
+            }
+        )
     }
 }

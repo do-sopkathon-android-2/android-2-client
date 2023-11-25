@@ -14,13 +14,29 @@
         android:background="@drawable/rectangle_gray_100_radius_4"
         android:paddingVertical="20dp">
 
+        <EditText
+            android:id="@+id/ev_to_do_list_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="계획을 입력해주세요."
+            style="@style/body_b14"
+            android:imeOptions="actionDone"
+            android:visibility="invisible"
+            android:textColor="@color/gray_400_7E7E7E"
+            android:layout_marginStart="12dp"
+            android:background="@color/gray_100_EDEDED"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_to_do_list_content"
             style="@style/body_b14"
-            android:text="계획작성완"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:text="계획작성완"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

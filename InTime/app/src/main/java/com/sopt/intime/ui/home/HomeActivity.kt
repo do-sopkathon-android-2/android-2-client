@@ -1,13 +1,18 @@
 package com.sopt.intime.ui.home
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anychart.AnyChart
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Pie
+import com.sopt.intime.data.remote.response.DataContent
 import com.sopt.intime.data.remote.response.UserTimeDataResponse
 import com.sopt.intime.databinding.ActivityHomeBinding
 import com.sopt.intime.ui.home.adapter.dinner.DinnerAdapter
@@ -38,6 +43,30 @@ class HomeActivity : AppCompatActivity() {
         observeData()
 
         homeViewModel.getTodoListAll()
+
+        setupOnClickListenerMorningTag()
+        setupOnClickListenerLunchTag()
+        setupOnClickListenerDinnerTag()
+        setupOnClickListenerIcBack()
+
+        homeBinding.clHomeMorning.setOnClickListener {
+            homeViewModel.morningList.value = morningAdapter.currentList.toMutableList()
+            val list = morningAdapter.currentList.toMutableList()
+            list.add(DataContent((morningAdapter.currentList.size + 1).toLong(), ""))
+            homeViewModel.morningList.value =  list
+        }
+        homeBinding.clHomeLaunch.setOnClickListener {
+            homeViewModel.lunchList.value = lunchAdapter.currentList.toMutableList()
+            val list = lunchAdapter.currentList.toMutableList()
+            list.add(DataContent((lunchAdapter.currentList.size + 1).toLong(), ""))
+            homeViewModel.lunchList.value =  list
+        }
+        homeBinding.clHomeDinner.setOnClickListener {
+            homeViewModel.dinnerList.value = dinnerAdapter.currentList.toMutableList()
+            val list = dinnerAdapter.currentList.toMutableList()
+            list.add(DataContent((dinnerAdapter.currentList.size + 1).toLong(), ""))
+            homeViewModel.dinnerList.value =  list
+        }
     }
 
     private fun setupAnyPieChart(time: UserTimeDataResponse) {
@@ -67,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupMorningRecyclerView() {
-        morningAdapter = MorningAdapter()
+        morningAdapter = MorningAdapter(::onMorningTodoListClick)
         homeBinding.rvHomeMorning.adapter = morningAdapter
         homeBinding.rvHomeMorning.layoutManager = object : LinearLayoutManager(this) {
             override fun canScrollVertically(): Boolean {
@@ -77,7 +106,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupLunchRecyclerView() {
-        lunchAdapter = LunchAdapter()
+        lunchAdapter = LunchAdapter(::onLunchTodoListClick)
         homeBinding.rvHomeLaunch.adapter = lunchAdapter
         homeBinding.rvHomeLaunch.layoutManager = object : LinearLayoutManager(this) {
             override fun canScrollVertically(): Boolean {
@@ -87,7 +116,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupDinnerRecyclerView() {
-        dinnerAdapter = DinnerAdapter()
+        dinnerAdapter = DinnerAdapter(::onDinnerTodoListClick)
         homeBinding.rvHomeDinner.adapter = dinnerAdapter
         homeBinding.rvHomeDinner.layoutManager = object : LinearLayoutManager(this) {
             override fun canScrollVertically(): Boolean {
@@ -108,6 +137,15 @@ class HomeActivity : AppCompatActivity() {
             lunchAdapter.submitList(it.lunch)
             dinnerAdapter.submitList(it.dinner)
         }
+        homeViewModel.morningList.observe(this) {
+            morningAdapter.submitList(it.toList())
+        }
+        homeViewModel.lunchList.observe(this) {
+            lunchAdapter.submitList(it.toList())
+        }
+        homeViewModel.dinnerList.observe(this) {
+            dinnerAdapter.submitList(it.toList())
+        }
     }
 
     private fun setTodoTimeTag(it: UserTimeDataResponse) {
@@ -116,4 +154,98 @@ class HomeActivity : AppCompatActivity() {
         homeBinding.tvDinnerTag.text = "저녁 | ${it.dinnerStart}시"
         homeBinding.tvNightTag.text = "밤 | ${it.nightStart}시"
     }
+
+    private fun onMorningTodoListClick(content: String) {
+        homeViewModel.postTodoList(content, "morning")
+    }
+    private fun onLunchTodoListClick(content: String) {
+        homeViewModel.postTodoList(content, "lunch")
+    }
+    private fun onDinnerTodoListClick(content: String) {
+        homeViewModel.postTodoList(content, "dinner")
+    }
+
+    private fun setupOnClickListenerMorningTag() {
+        homeBinding.tvMorningTag.setOnClickListener {
+            with(homeBinding) {
+                ivHomeBack.visibility = View.VISIBLE
+                clHomeLaunch.visibility = View.GONE
+                rvHomeLaunch.visibility = View.GONE
+                clHomeDinner.visibility = View.GONE
+                rvHomeDinner.visibility = View.GONE
+                tvMorningTag.isEnabled = false
+                tvLaunchTag.isEnabled = false
+                tvDinnerTag.isEnabled = false
+            }
+            val colors = arrayOf("#C4BAFF", "#BFBFBF", "#BFBFBF", "#BFBFBF")
+            pie.palette(colors)
+            homeBinding.piechartHome.setChart(pie)
+        }
+    }
+
+    private fun setupOnClickListenerLunchTag() {
+        homeBinding.tvLaunchTag.setOnClickListener {
+            with(homeBinding) {
+                ivHomeBack.visibility = View.VISIBLE
+                clHomeMorning.visibility = View.GONE
+                rvHomeMorning.visibility = View.GONE
+                clHomeDinner.visibility = View.GONE
+                rvHomeDinner.visibility = View.GONE
+                tvMorningTag.isEnabled = false
+                tvLaunchTag.isEnabled = false
+                tvDinnerTag.isEnabled = false
+            }
+
+            val colors = arrayOf("#BFBFBF", "#9B8AFF", "#BFBFBF", "#BFBFBF")
+            pie.palette(colors)
+            homeBinding.piechartHome.setChart(pie)
+            homeBinding.piechartHome.invalidate()
+        }
+    }
+
+    private fun setupOnClickListenerDinnerTag() {
+        homeBinding.tvDinnerTag.setOnClickListener {
+            with(homeBinding) {
+                ivHomeBack.visibility = View.VISIBLE
+                clHomeMorning.visibility = View.GONE
+                rvHomeMorning.visibility = View.GONE
+                clHomeLaunch.visibility = View.GONE
+                rvHomeLaunch.visibility = View.GONE
+                tvMorningTag.isEnabled = false
+                tvLaunchTag.isEnabled = false
+                tvDinnerTag.isEnabled = false
+            }
+
+            val colors = arrayOf("#BFBFBF", "#BFBFBF", "#6958CF", "#BFBFBF")
+            pie.palette(colors)
+            homeBinding.piechartHome.setChart(pie)
+            homeBinding.root.requestLayout()
+        }
+    }
+
+    private fun setupOnClickListenerIcBack() {
+        homeBinding.ivHomeBack.setOnClickListener {
+            with(homeBinding) {
+                clHomeMorning.visibility = View.VISIBLE
+                rvHomeMorning.visibility = View.VISIBLE
+                clHomeLaunch.visibility = View.VISIBLE
+                rvHomeLaunch.visibility = View.VISIBLE
+                clHomeDinner.visibility = View.VISIBLE
+                rvHomeDinner.visibility = View.VISIBLE
+                ivHomeBack.visibility = View.GONE
+                tvMorningTag.isEnabled = true
+                tvLaunchTag.isEnabled = true
+                tvDinnerTag.isEnabled = true
+            }
+
+            val colors = arrayOf("#C4BAFF", "#9B8AFF", "#6958CF", "#3D3B5C")
+            pie.palette(colors)
+            homeBinding.piechartHome.setChart(pie)
+        }
+    }
+}
+
+fun Activity.hideKeyboard(view: View) {
+    (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+        .hideSoftInputFromWindow(view.windowToken, 0)
 }

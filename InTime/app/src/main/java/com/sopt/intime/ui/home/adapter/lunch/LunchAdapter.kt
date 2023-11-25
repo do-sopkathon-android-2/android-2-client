@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.sopt.intime.data.remote.response.DataContent
 import com.sopt.intime.databinding.ItemToDoListBinding
 
-class LunchAdapter : ListAdapter<DataContent, LunchViewHolder>(object :
+class LunchAdapter(
+    val onClick: (String) -> Unit
+) : ListAdapter<DataContent, LunchViewHolder>(object :
     DiffUtil.ItemCallback<DataContent>() {
     override fun areItemsTheSame(oldItem: DataContent, newItem: DataContent): Boolean {
         return oldItem.id == newItem.id
@@ -27,7 +29,8 @@ class LunchAdapter : ListAdapter<DataContent, LunchViewHolder>(object :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            onClick = onClick
         )
     }
 
