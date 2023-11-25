@@ -1,5 +1,9 @@
 # android-2-client
 DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
+## 시연영상
+
+https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/b1d50b95-2e39-4ab6-900f-a21f758e42cb
+
 
 ## Contributor
 
@@ -41,7 +45,7 @@ DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
 
 ## About Service
 
-서비스명 : My Miracle time (마미타)
+서비스명 : 마이 미라클 타임 (a.k.a 마미타)
 
 서비스설명 : 아침 6시에 일어나는 사람만이 미라클 타임이 아니다!! 나의 미라클타임을 정하고 확인할 수 있는 서비스
 
@@ -51,18 +55,15 @@ DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
 
 ```kotlin
 ├─ app/network
-│   ├─ network
-│   │   ├─ ApiFactory
-│   │   ├─ Dto
-│   │   │   ├─ onboard
-│   │   │   └─ home
-│   │   └─ Service
-│   ├─ domain
-│   │   └─ model
+│   ├─ data
+│   │   ├─ api
+│   │   └─ remote
+│   │       ├─ request
+│   │       └─ response
 │   └─ ui
 │       ├─ onboard
 │       ├─ home
-│       └─ util
+│       └─ timeSetting
 │
 
 ```
@@ -109,3 +110,7 @@ https://github.com/PRNDcompany/android-style-guide/blob/main/Resource.md
 ## Before Our Picture
 
 <img src="https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/ec5993c0-839f-4d5f-8579-435a6ea43a59" width="400px;" alt=""/>
+
+## After Our Picture
+
+<img src="https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/7881b952-084f-4408-b9dc-5bb99d658cce" width="400px;" alt=""/>
