@@ -1,17 +1,25 @@
 package com.sopt.intime.ui.onboarding
 
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class OnboardingAdapter : RecyclerView.Adapter<OnboardingViewHolder>() {
-    private val items: List<String> = listOf("123", "456", "789")
+class OnboardingAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingViewHolder =
-        OnboardingViewHolder.from(parent)
+    private lateinit var onboardingAdapter: OnboardingAdapter
+    private val fragments = listOf<Fragment>(
+        OnboardingProblemFragment(),
+        OnboardingValueFragment(),
+        OnboardingDetailFragment()
+    )
 
-    override fun getItemCount(): Int = items.size
-
-    override fun onBindViewHolder(holder: OnboardingViewHolder, position: Int) {
-        holder.bind(items[position])
+    override fun getItemCount(): Int {
+        return fragments.size
     }
+
+    override fun createFragment(position: Int): Fragment {
+        return fragments[position]
+    }
+
 }
