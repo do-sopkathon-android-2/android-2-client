@@ -20,7 +20,9 @@ class TimeSettingViewModel(
     private val inTimeService: InTimeService
 ) : ViewModel() {
     var inputMode: InputMode = InputMode.IDLE
-    private val timeRecord: MutableLiveData<List<Pair<String, String>>> = MutableLiveData()
+    private val timeRecord: MutableLiveData<MutableList<Pair<String, String>>> = MutableLiveData(
+        mutableListOf()
+    )
 
     private val _progressState: MutableLiveData<ProgressState> =
         MutableLiveData(ProgressState.MORNING)
@@ -45,9 +47,9 @@ class TimeSettingViewModel(
                     )
                 )
             }.onSuccess {
-                Log.d("123123", it.status.toString())
+                Log.d("status", it.status.toString())
             }.onFailure {
-                Log.d("12312344", it.toString())
+                Log.d("status", it.toString())
             }
         }
     }
@@ -71,7 +73,11 @@ class TimeSettingViewModel(
     }
 
     fun savePreviousTime() {
-        timeRecord.value = listOf((_startTime.value ?: BLANK) to (_endTime.value ?: BLANK))
+        Log.d("123123", _startTime.value.toString())
+        Log.d("1231234", _endTime.value.toString())
+        timeRecord.value?.add((_startTime.value ?: BLANK) to (_endTime.value ?: BLANK))
+
+        Log.d("123123123", timeRecord.value.toString())
         relocateTimeState()
     }
 
