@@ -1,5 +1,7 @@
-# android-2-client
-DO SOPT 솝커톤 Android 2조 클라이언트 레포입니다.
+# My Miracle Time
+![intro](https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/61631de3-250b-4a68-b5b4-43b1bcb436dc)
+
+
 ## 시연영상
 
 https://github.com/do-sopkathon-android-2/android-2-client/assets/52442547/b1d50b95-2e39-4ab6-900f-a21f758e42cb
